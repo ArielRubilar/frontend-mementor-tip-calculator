@@ -1,6 +1,7 @@
 {
   "name": "tip-calculator-app",
   "private": true,
+  "homepage": "http://ArielRubilar.github.io/frontend-mementor-tip-calculator",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -33,4 +34,5 @@
     "typescript": "*",
     "vite": "^4.3.9"
   }
+
 }
