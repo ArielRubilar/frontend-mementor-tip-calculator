@@ -24,7 +24,7 @@ ButtonProps
 
   const buttonFull = (styleType.full ?? false) ? styles['button--full'] : ''
   return (
-        <button className={`${styles.button} ${buttonType} ${buttonVariant} ${buttonFull}`} {...props} ref={ref} aria-selected={Boolean(selected)}>
+        <button className={`${styles.button} ${buttonType} ${buttonVariant} ${buttonFull}`} {...props} ref={ref} aria-pressed={Boolean(selected)}>
             {children}
         </button>
   )
