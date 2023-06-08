@@ -1,0 +1,26 @@
+
+.card {
+    --_bg: hsl(var(--neutral-000));
+    --_color: currentColor;
+}
+
+.card {
+    border-radius: var(--br-5);
+    background-color: var(--_bg);
+    color: var(--_color);
+}
+
+
+.card--bg-dark {
+    --_bg: hsl(var(--neutral-700));
+    --_color: hsl(var(--neutral-000));
+}
+
+.card--shadow {
+    box-shadow: 0px 5px 16px 0px hsla(var(--neutral-700) , .2);
+}
+
+
+.card__content {
+    padding: 1.5rem;
+}

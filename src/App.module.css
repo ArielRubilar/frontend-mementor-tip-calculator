@@ -1,0 +1,23 @@
+.resume {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.resume > :last-child {
+    margin-top: auto;
+}
+
+
+.main-content {
+    display: grid;
+    gap: 1rem   ;
+}
+
+@media (min-width: 500px) {
+    .main-content {
+        grid-template-columns: repeat(2 ,1fr);
+        gap: 2rem;
+    }
+}

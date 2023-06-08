@@ -1,0 +1,4 @@
+.label {
+    font-size: .7rem;
+    color: hsl(var(--neutral-400));
+}

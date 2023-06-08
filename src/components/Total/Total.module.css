@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.label {
+    font-size: .7rem;
+    display: grid;
+}
+
+.label  > span {
+    font-size: .55rem;
+    opacity: .6;
+    font-weight: 500;
+}
+
+.amount {
+    color: hsl(var(--primary-400));
+    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .2ch;
+    line-height: 1;
+}
+
+.amount > svg {
+    height: .7em;
+    width: 100%;
+}

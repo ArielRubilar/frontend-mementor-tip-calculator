@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --primary-200: 172, 66%, 57%;
+  --primary-400: 172, 67%, 45%;
+  --neutral-700: 183, 100%, 15%;
+  --neutral-500: 186, 14%, 43%;
+  --neutral-400:  184, 14%, 56%;
+  --neutral-300: 185, 41%, 84%;
+  --neutral-100: 189, 41%, 97%;
+  --neutral-000: 0, 0%, 100%;
+
+
+}
+
+:root {
+  --fs-base: 24px;
+  --ff-base:'Space Mono', monospace;;
+  --fw-base: 700;
+
+}
+
+:root {
+  --br-4: .25em;
+  --br-5: .5em;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+html{
+  font-family: var(--ff-base);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-base);
+  min-height: 100vh;
+  color: hsl(var(--neutral-700));
+  background: hsl(var(--neutral-300));
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  max-width: 1000px;
+  margin-inline: auto;
+  gap: 2rem;
+}
+
+.main-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+ 
+}
+
+
+
+@media (min-width: 500px) {
+  main {
+    padding-top: 0rem;
+    gap: clamp(4rem, 10vh , 5rem);
+  }
+}

@@ -1,0 +1,17 @@
+.form {
+    display: grid;
+    gap: 1rem;
+}
+
+
+.tip-selector {
+    display: grid;
+    gap: .5rem;
+    grid-template-columns: repeat(2 ,1fr);
+}
+
+@media (min-width: 500px) {
+    .tip-selector {
+        grid-template-columns: repeat(3 ,1fr);
+    }
+}
