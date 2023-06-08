@@ -1,4 +1,10 @@
 .label {
     font-size: .7rem;
     color: hsl(var(--neutral-400));
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.error {
+    color: red;
 }

@@ -5,21 +5,22 @@ import { Title } from './components/ui/Title/Title'
 import styles from './App.module.css'
 import { Form } from './components/Form/Form'
 import { useState } from 'react'
+import { calculateTip, calculateTotalPerPerson } from './utils/tips.util'
 
 function App () {
   const [totalBill, setTotalBill] = useState('')
-  const [tip, setTip] = useState(0)
+  const [tip, setTip] = useState('')
   const [numberOfPeoples, setNumberOfPeople] = useState('1')
 
   const handleReset = () => {
     setTotalBill('')
-    setTip(0)
+    setTip('')
     setNumberOfPeople('1')
   }
 
-  const tipAmount = Math.round(Number(totalBill) * Number(tip) * 100) / 100
+  const totalTip = calculateTip(Number(totalBill), Number(tip))
 
-  const total = Number(numberOfPeoples) > 0 ? Math.round(tipAmount / Number(numberOfPeoples) * 100) / 100 : 0
+  const tipPerPerson = calculateTotalPerPerson(totalTip, Number(numberOfPeoples))
 
   return (
     <div className='main-container'>
@@ -43,9 +44,9 @@ function App () {
               <Card styleType='dark'>
                 <CardContent className={styles.resume}>
 
-                  <Total label='Tip Amount' amount={tipAmount} />
+                  <Total label='Tip Amount' amount={totalTip} />
 
-                  <Total label='Total' amount={ total } />
+                  <Total label='Total' amount={ tipPerPerson } />
 
                   <Button onClick={handleReset} styleType={{ colorVariant: 'light', full: true }}> Reset</Button>
                 </CardContent>

@@ -9,8 +9,8 @@ import { useEffect, useState } from 'react'
 interface FormProps {
   bill: string
   onChangeBill: (bill: string) => void
-  tip: number
-  onChangeTip: (tip: number) => void
+  tip: string
+  onChangeTip: (tip: string) => void
   peoples: string
   onChangePeoples: (peoples: string) => void
 }
@@ -23,17 +23,23 @@ export const Form = ({ bill, onChangePeoples, tip, onChangeTip, peoples, onChang
   const [customTip, setCustomTip] = useState('')
 
   useEffect(() => {
-    if (tip === 0) setCustomTip(String(tip))
+    if ((tip.length === 0) || tip === '0') setCustomTip(tip)
   }, [tip])
 
-  const handleChangeTip = (tip: number) => {
+  const handleChangeTip = (tip: string) => {
     setCustomTip('')
-    onChangeTip(tip / 100)
+    onChangeTip(tip)
   }
 
-  const onlyNumber = (value: string, callback: (n: string) => void) => {
+  const onlyNumberAndDot = (value: string, callback: (n: string) => void) => {
     const regex = /^[\d|.]+$/
+    if (value === '' || regex.test(value)) {
+      callback(value)
+    }
+  }
 
+  const onlyIntNumber = (value: string, callback: (n: string) => void) => {
+    const regex = /^[\d]+$/
     if (value === '' || regex.test(value)) {
       callback(value)
     }
@@ -42,32 +48,34 @@ export const Form = ({ bill, onChangePeoples, tip, onChangeTip, peoples, onChang
   return (
         <div className={styles.form}>
             <FormField>
-                <Label htmlFor="">Bill</Label>
+                <Label htmlFor="bill">Bill</Label>
                 <TextField
+                    id='bill'
                     placeholder='0.00'
                     type='text'
                     value={bill}
                     onChange={(e) => {
-                      onlyNumber(e.target.value, onChangeBill)
+                      onlyNumberAndDot(e.target.value, onChangeBill)
                     }}
                 />
             </FormField>
 
             <FormField>
-                <Label htmlFor="">Select Tip %</Label>
+                <Label htmlFor="tip">Select Tip %</Label>
                 <div className={styles['tip-selector']}>
                     { TIPS_OPTIONS.map(option => (
-                        <Button selected={tip * 100 === option} key={option} onClick={ () => { handleChangeTip(option) }} >{option} %</Button>
+                        <Button selected={ Number(tip) === option} key={option} onClick={ () => { handleChangeTip(String(option)) }} >{option} %</Button>
                     ))}
                     <TextField
+                        id='tip'
                         value={customTip}
                         icon={null}
                         type="text"
                         placeholder='Custom'
                         onChange={e => {
-                          onlyNumber(e.target.value, value => {
+                          onlyIntNumber(e.target.value, value => {
                             setCustomTip(value)
-                            onChangeTip(Number(value) / 100)
+                            onChangeTip(value)
                           })
                         }}
                     />
@@ -75,14 +83,21 @@ export const Form = ({ bill, onChangePeoples, tip, onChangeTip, peoples, onChang
             </FormField>
 
             <FormField>
-                <Label htmlFor="">Number of People</Label>
+                <Label
+                    htmlFor="numberOfPerson"
+                    showError={Number(peoples) <= 0}
+                    message='Can`t be 0'
+                >
+                    Number of People
+                </Label>
                 <TextField
+                    id='numberOfPerson'
                     icon={<Icons.people/>}
                     placeholder='0'
                     type='text'
                     isInvalid={ Number(peoples) <= 0}
                     value={peoples}
-                    onChange={e => { onlyNumber(e.target.value, onChangePeoples) }}
+                    onChange={e => { onlyIntNumber(e.target.value, onChangePeoples) }}
                 />
             </FormField>
         </div>
