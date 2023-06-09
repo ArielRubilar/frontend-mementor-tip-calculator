@@ -1,11 +1,14 @@
+import { useState } from 'react'
+
+import { Form } from './components/Form/Form'
 import { Total } from './components/Total/Total'
 import { Button } from './components/ui/Button/Button'
 import { Card, CardContent } from './components/ui/Card/Card'
 import { Title } from './components/ui/Title/Title'
-import styles from './App.module.css'
-import { Form } from './components/Form/Form'
-import { useState } from 'react'
+
 import { calculateTip, calculateTotalPerPerson } from './utils/tips.util'
+
+import styles from './App.module.css'
 
 function App () {
   const [totalBill, setTotalBill] = useState('')
@@ -26,7 +29,7 @@ function App () {
     <div className='main-container'>
 
       <main>
-        <Title>Spli<wbr />tter</Title>
+        <Title>Spli<br />tter</Title>
 
         <Card hasShadow={true}>
           <CardContent>
@@ -48,7 +51,12 @@ function App () {
 
                   <Total label='Total' amount={ tipPerPerson } />
 
-                  <Button onClick={handleReset} styleType={{ colorVariant: 'light', full: true }}> Reset</Button>
+                  <Button
+                    onClick={handleReset}
+                    styleType={{ colorVariant: 'light', full: true }}
+                  >
+                    Reset
+                  </Button>
                 </CardContent>
               </Card>
             </div>

@@ -1,4 +1,5 @@
 import { type LabelHTMLAttributes, forwardRef } from 'react'
+
 import styles from './Label.module.css'
 
 interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {

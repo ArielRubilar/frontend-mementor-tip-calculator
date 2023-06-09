@@ -1,4 +1,5 @@
 import { Icons } from '../ui/Icons'
+
 import styles from './Total.module.css'
 
 interface TotalProps {

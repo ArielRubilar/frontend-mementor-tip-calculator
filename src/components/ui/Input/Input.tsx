@@ -1,21 +1,24 @@
-
 import { forwardRef, type InputHTMLAttributes } from 'react'
-import styles from './TextField.module.css'
+
 import { Dollar } from '../Icons/Dollar'
 
-interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+import styles from './Input.module.css'
+
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' > {
   isInvalid?: boolean
   icon?: React.ReactNode
+  onChange: (value: string) => void
 }
 
-export const TextField = forwardRef<
+export const Input = forwardRef<
 HTMLInputElement,
-TextFieldProps
->(({ isInvalid, icon = <Dollar />, ...props }, ref) => {
+InputProps
+>(({ onChange, isInvalid, icon = <Dollar />, ...props }, ref) => {
   return (
     <div className={styles['text-field']}>
         {Boolean(icon) && (<div className={styles.icon}>{icon}</div>)}
         <input
+            onChange={ e => { onChange(e.target.value) }}
             aria-invalid={Boolean(isInvalid)}
             className={styles.input}
             ref={ref}
@@ -25,4 +28,4 @@ TextFieldProps
   )
 })
 
-TextField.displayName = 'TextField'
+Input.displayName = 'Input'
