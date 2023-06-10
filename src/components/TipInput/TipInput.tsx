@@ -11,8 +11,8 @@ const TIPS_OPTIONS = [
 
 export const TipInput = forwardRef<
 HTMLInputElement,
-InputProps
->(({ value = '', onChange: onChangeTip, ...props }, ref) => {
+InputProps & { tipOptions?: number[] }
+>(({ value = '', tipOptions = TIPS_OPTIONS, onChange: onChangeTip, ...props }, ref) => {
   const [customTip, setCustomTip] = useState('')
 
   const tip = String(value ?? '')
@@ -33,7 +33,7 @@ InputProps
 
   return (
         <div className={styles['tip-selector']}>
-            { TIPS_OPTIONS.map(option => (
+            { tipOptions.map(option => (
                 <Button selected={ Number(tip) === option} key={option} onClick={ () => { handleChangeTip(String(option)) }} >{option} %</Button>
             ))}
             <Input

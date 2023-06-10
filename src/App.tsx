@@ -9,6 +9,7 @@ import { Title } from './components/ui/Title/Title'
 import { calculateTip, calculateTotalPerPerson } from './utils/tips.util'
 
 import styles from './App.module.css'
+import { Icons } from './components/ui/Icons'
 
 function App () {
   const [totalBill, setTotalBill] = useState('')
@@ -29,7 +30,7 @@ function App () {
     <div className='main-container'>
 
       <main>
-        <Title>Spli<br />tter</Title>
+        <Title><Icons.logo/></Title>
 
         <Card hasShadow={true}>
           <CardContent>
